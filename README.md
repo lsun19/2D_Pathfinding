@@ -17,3 +17,30 @@ This program involves implementing a bidirectional A* search algorithm to find p
 
 ```bash
 python nm_interactive.py ../input/homer.png ../input/homer.png.mesh.pickle 2
+
+```
+
+2. The parameters represent the image file to display (must be a PNG), a binary file containing the navmesh representation of the given image (.mesh.pickle), and a subsampling factor for scaling down large images.
+
+3. Upon running this code, a new window will display the image parameter. Use your cursor to click on the image to define the source (first click) and destination (second click) points. After the second click, the find_path function within nm_pathfinder.py is called to compute the path.
+
+### Base Code Overview
+
+- /input and three Python files (/src) comprise the provided base code:
+   - src/nm_interactive.py: Main interactive program
+   - src/nm_meshbuilder.py: Builds navmeshes from images, producing .mesh.pickle files.
+   - src/nm_pathfinder.py: Contains the find_path function for implementing the bidirectional A* algorithm.
+- input/homer.png.mesh.pickle: Binary data file created by nm_meshbuilder.py, representing the navmesh.
+
+### Creating a Custom Map
+1. Find and save an image suitable for conversion to a black-and-white occupancy map.
+2. Create a black-and-white version of the image using a photo editor and save it as a PNG.
+3. Run the navmesh builder program to produce .mesh.pickle and a visualization of the navmesh.
+4. Run your pathfinding program with the original PNG file, the pickled mesh data, and a suitable subsampling factor.
+
+#### Example command:
+
+```bash
+python nm_meshbuilder.py your_image.png
+python nm_interactive.py your_image-orig.png your_image.png.mesh.pickle 1
+```
